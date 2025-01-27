@@ -3,7 +3,7 @@ name: Update Submodules
 on:
   push:
     branches:
-      - main
+      - master
   schedule:
     - cron: "0 0 * * *" # Runs daily at midnight UTC
   workflow_dispatch: # Allows manual triggering
@@ -43,4 +43,4 @@ jobs:
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git add .
         git commit -m "Update submodules to latest commits"
-        git push origin main
+        git push origin master
