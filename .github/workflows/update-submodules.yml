@@ -7,12 +7,16 @@ on:
   schedule:
     - cron: "0 0 * * *" # Runs daily at midnight UTC
   workflow_dispatch: # Allows manual triggering
+  repository_dispatch:
+    types:
+      - update-submodule
 
 jobs:
   update-submodules:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
 
     steps:
