@@ -1,9 +1,12 @@
 [submodule "tsk_email_service"]
 	path = tsk_email_service
 	url = git@github.com:Codeminister2137/tsk-email-service.git
+	branch = main
 [submodule "tsk_calendar_service"]
 	path = tsk_calendar_service
 	url = git@github.com:Codeminister2137/tsk-calendar-service.git
+	branch = main
 [submodule "tsk_auth_service"]
 	path = tsk_auth_service
 	url = git@github.com:Codeminister2137/tsk-auth-service.git
+	branch = main

@@ -1,0 +1,46 @@
+name: Update Submodules
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at midnight UTC
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository, including submodules
+    - name: Check out repository and submodules
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive # Ensure submodules are included
+
+    # Step 2: Pull the latest changes for submodules
+    - name: Update submodules
+      run: |
+        git submodule update --remote --recursive
+        git status
+
+    # Step 3: Check if there are changes
+    - name: Check for changes in submodules
+      id: check_changes
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changes=true" >> $GITHUB_ENV
+        else
+          echo "changes=false" >> $GITHUB_ENV
+        fi
+
+    # Step 4: Commit and push updated submodules if there are changes
+    - name: Commit and push submodule updates
+      if: env.changes == 'true'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Update submodules to latest commits"
+        git push origin main
