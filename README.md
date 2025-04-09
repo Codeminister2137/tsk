@@ -7,9 +7,9 @@ Task Scheduler is microservices-based project built using Django. Dependencies a
 ## Installation Instructions
 ### For Developers
 
-    ```
-For now refer to specific micoroservices instructions until those are integrated into larger structure
-        ```
+
+**For now refer to specific micoroservices instructions until those are integrated into larger structure**
+
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
